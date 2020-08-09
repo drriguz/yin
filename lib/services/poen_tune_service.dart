@@ -2,7 +2,10 @@ import 'package:yin/screens/viewmodels/poem_tune_index.dart';
 import 'package:yin/services/db/poem_tune_entity.dart';
 import 'package:yin/services/db/repository.dart';
 
-const collectionMapping = {"钦定词谱": 1};
+const collectionMapping = {
+  "白香词谱": 0,
+  "钦定词谱": 1,
+};
 
 class PoemTuneService {
   final SqliteRepository _repository;

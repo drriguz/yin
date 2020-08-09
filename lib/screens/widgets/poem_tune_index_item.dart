@@ -9,27 +9,54 @@ class PoemTuneIndexItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: <Widget>[
-            Text(
-              data.name,
-              style: const TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            Text(
-              data.description,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-            )
+            _buildHeader(),
+            _buildDescription(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Container(
+      width: 70,
+      child: Column(
+        children: <Widget>[
+          Text(
+            data.name.substring(0, 1),
+            style: const TextStyle(
+              fontSize: 48,
+              color: Colors.indigo,
+              fontFamily: "Liu",
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDescription() {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            data.name,
+          ),
+          Text(
+            data.description,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 13,
+              color: Colors.grey,
+            ),
+          )
+        ],
       ),
     );
   }
