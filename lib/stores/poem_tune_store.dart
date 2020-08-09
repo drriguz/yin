@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:mobx/mobx.dart';
 import 'package:yin/models/poem_tune.dart';
+import 'package:yin/screens/viewmodels/poem_tune_index.dart';
 import 'package:yin/services/poen_tune_service.dart';
 
 part 'poem_tune_store.g.dart';
@@ -18,7 +19,7 @@ abstract class _PoemTuneStore with Store {
   @observable
   bool isBusy = false;
 
-  List<String> poemTuneNames = List<String>();
+  List<PoemTuneIndex> poemTuneIndex = List<PoemTuneIndex>();
 
   _PoemTuneStore(this._poemTuneService, this._collectionName);
 
@@ -31,8 +32,8 @@ abstract class _PoemTuneStore with Store {
   @action
   Future<void> load() async {
     setBusy();
-    poemTuneNames.clear();
-    poemTuneNames.addAll(await _poemTuneService.getPoemTuneNames(_collectionName));
+    poemTuneIndex.clear();
+    poemTuneIndex.addAll(await _poemTuneService.getPoemTuneIndex(_collectionName));
     setIdle();
   }
 }

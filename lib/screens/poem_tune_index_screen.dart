@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:yin/models/poem_tune.dart';
 import 'package:yin/services/poen_tune_service.dart';
 import 'package:yin/stores/poem_tune_store.dart';
 
@@ -37,11 +36,10 @@ class _PoemTuneIndexScreenState extends State<PoemTuneIndexScreen> with Automati
 
   Widget _renderIndex() {
     return ListView.builder(
-      itemCount: _store.poemTuneNames.length,
+      itemCount: _store.poemTuneIndex.length,
       itemBuilder: (_, index) {
-        print("render...$index");
-        final String poemTuneName = _store.poemTuneNames[index];
-        return PoemTuneIndexItem(poemTuneName);
+        final item = _store.poemTuneIndex[index];
+        return PoemTuneIndexItem(item);
       },
     );
   }

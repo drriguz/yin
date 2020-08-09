@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'poem_tune_index_screen.dart';
-import 'viewmodels/book.dart';
-import 'widgets/bookshelf.dart';
 
 class PoemTuneTabScreen extends StatefulWidget {
   @override
   _PoemTuneTabScreenState createState() => _PoemTuneTabScreenState();
 }
 
-class _PoemTuneTabScreenState extends State<PoemTuneTabScreen>
-    with SingleTickerProviderStateMixin {
+class _PoemTuneTabScreenState extends State<PoemTuneTabScreen> with SingleTickerProviderStateMixin {
   TabController _tabController;
+  TextEditingController _searchInputController;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _searchInputController = TextEditingController();
   }
 
   @override
@@ -30,6 +29,12 @@ class _PoemTuneTabScreenState extends State<PoemTuneTabScreen>
     return Scaffold(
       appBar: AppBar(
         title: Text("词谱"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+        ],
         bottom: TabBar(
           controller: _tabController,
           tabs: [

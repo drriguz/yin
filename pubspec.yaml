@@ -75,6 +75,9 @@ flutter:
         - asset: assets/SourceHanSansCN-Regular.ttf
         - asset: assets/SourceHanSansCN-Bold.ttf
           weight: 700
+    - family: Liu
+      fonts:
+        - asset: assets/fonts/苏新诗柳楷简.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
