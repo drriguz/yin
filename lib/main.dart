@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:yin/screens/create_poem_screen.dart';
 import 'package:yin/screens/home_screen.dart';
+import 'package:yin/screens/poem_tune_detail_screen.dart';
 import 'package:yin/services/db/repository.dart';
 import 'package:yin/services/poen_tune_service.dart';
 import 'package:yin/stores/poem_tune_store.dart';
@@ -32,6 +33,18 @@ void main() async {
       routes: {
         "/": (_) => HomeScreen(),
         "/song_poem/create": (_) => CreatePoemScreen(),
+      },
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case "/poem_tune/detail":
+            {
+              int id = settings.arguments;
+              return MaterialPageRoute(builder: (context) => PoemTuneDetailScreen(id));
+            }
+          default:
+            break;
+        }
+        return null;
       },
     ),
   ));

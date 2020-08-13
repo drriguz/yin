@@ -38,18 +38,18 @@ class _PoemTuneTabScreenState extends State<PoemTuneTabScreen> with SingleTicker
         bottom: TabBar(
           controller: _tabController,
           tabs: [
+            Tab(text: "收藏"),
             Tab(text: "钦定词谱"),
             Tab(text: "白香词谱"),
-            Tab(text: "韵表"),
           ],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
+          Text("暂无"),
           PoemTuneIndexScreen("钦定词谱", ""),
           PoemTuneIndexScreen("白香词谱", ""),
-          Text("3"),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:yin/screens/viewmodels/poem_tune_detail.dart';
 import 'package:yin/screens/viewmodels/poem_tune_index.dart';
 import 'package:yin/services/db/poem_tune_entity.dart';
 import 'package:yin/services/db/repository.dart';
@@ -23,6 +24,13 @@ class PoemTuneService {
       cache[collectionName] = await _repository.listAllPoemTunes(_getCollectionId(collectionName));
     }
     return cache[collectionName];
+  }
+
+  Future<PoemTuneDetail> fetchPoemTuneDetail(int id) async {
+    final index = await _repository.getPoemTune(id);
+    if (index == null) return null;
+    final forms = await _repository.listPoemTuneForms(id);
+    return PoemTuneDetail(index, forms);
   }
 
   int _getCollectionId(String name) {
