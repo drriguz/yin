@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:yin/services/poem_pattern.dart';
 import 'package:yin/services/poen_tune_service.dart';
 import 'package:yin/stores/poem_tune_detail_store.dart';
-import 'package:yin/widgets/poem_line_input.dart';
+import 'package:yin/widgets/loading.dart';
+
+import 'widgets/poem_example.dart';
 
 class PoemTuneDetailScreen extends StatefulWidget {
   final int _id;
@@ -28,35 +29,12 @@ class _PoemTuneDetailScreenState extends State<PoemTuneDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("详情"),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(10),
-        child: Observer(
-            builder: (_) => _store.isLoading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : _buildDetail()),
-      ),
+      body: Observer(builder: (_) => _store.isLoading ? Loading() : PoemExample(_store.detail)),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: '开始创作',
         child: Icon(Icons.add),
       ),
     );
-  }
-
-  Widget _buildDetail() {
-    return Column(
-      children: <Widget>[
-        Text(_store.detail.name),
-      ],
-    );
-  }
-
-  PoemLineEditController _createController(String codes) {
-    return PoemLineEditController(TonePattern.parse(codes));
   }
 }
