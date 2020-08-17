@@ -20,18 +20,34 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
   }
 
   Widget _buildExampleView(PoemTuneTemplate template) {
+    final List<TemplateLine> all = List<TemplateLine>();
+    for (final s in template.sections) {
+      all.addAll(s.lines);
+      all.add(null); // separator
+    }
+
     return Container(
-      child: _buildLines(template.sections[0]),
+      child: ListView.builder(
+          itemBuilder: (_, index) {
+            final item = all[index];
+            if (item == null) return Divider();
+            return _buildLine(all[index].example);
+          },
+          itemCount: all.length),
     );
   }
 
-  Widget _buildLines(PoemTuneSection section) {
-    return ListView.builder(
-        itemBuilder: (_, index) => Text(
-              section.lines[index].example,
-              style: const TextStyle(fontSize: 24),
-            ),
-        itemCount: section.lines.length);
+  Widget _buildLine(String line) {
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        line,
+        style: const TextStyle(
+          fontSize: 22,
+          fontFamily: "HanaMinB",
+        ),
+      ),
+    );
   }
 
   @override
@@ -44,15 +60,18 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
             floating: true,
             snap: false,
             pinned: true,
-            //backgroundColor: Colors.white,
+            iconTheme: IconThemeData(
+              color: Colors.indigo,
+            ),
+            backgroundColor: Colors.white,
             title: Column(
               children: <Widget>[
                 Text(
                   widget._detail.name,
                   style: const TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
+                    fontSize: 28,
                     fontFamily: "Liu",
+                    color: Colors.indigo,
                   ),
                 ),
               ],
@@ -63,7 +82,7 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
                 decoration: BoxDecoration(
                     image: DecorationImage(
                   fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.dstATop),
                   image: AssetImage("assets/images/old_1.jpg"),
                 )),
                 child: Padding(
