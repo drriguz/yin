@@ -29,15 +29,39 @@ class PoemTuneSection {
 
 class PoemTuneTemplate {
   List<PoemTuneSection> sections;
+  List<TemplateLine> lines;
 
-  PoemTuneTemplate(this.sections);
+  PoemTuneTemplate(this.sections) {
+    lines = _flat();
+  }
 
   factory PoemTuneTemplate.from(Map<String, dynamic> json) {
-
     print(json["sections"]);
     final List<dynamic> sectionsJson = json["sections"];
     final sections = sectionsJson.map((e) => PoemTuneSection.from(e)).toList();
     return PoemTuneTemplate(sections);
+  }
+
+  static final splitter =  RegExp(r"[，。、]");
+
+  List<TemplateLine> _flat() {
+    List<TemplateLine> lines = new List<TemplateLine>();
+    for (final s in sections) {
+      for (final t in s.lines) {
+        final exampleLines = t.example.split(splitter);
+        final patternLines = t.pattern.split(splitter);
+        if (exampleLines.length != patternLines.length) {
+          print("Warn: pattern and example not match");
+          lines.add(t);
+        } else {
+          for (int i = 0; i < exampleLines.length; i++) {
+            lines.add(TemplateLine(example: exampleLines[i], pattern: patternLines[i]));
+          }
+        }
+      }
+      lines.add(null);
+    }
+    return lines;
   }
 }
 

@@ -6,9 +6,9 @@ import 'package:yin/screens/home_screen.dart';
 import 'package:yin/screens/poem_tune_detail_screen.dart';
 import 'package:yin/services/db/repository.dart';
 import 'package:yin/services/poen_tune_service.dart';
-import 'package:yin/stores/poem_tune_store.dart';
 
 import 'services/database_factory.dart';
+import 'theme/styles.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,9 +27,7 @@ void main() async {
     providers: providers,
     child: MaterialApp(
       title: "好吟",
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
+      theme: globalTheme,
       routes: {
         "/": (_) => HomeScreen(),
         "/song_poem/create": (_) => CreatePoemScreen(),

@@ -64,17 +64,29 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    # 花园明朝体
     - family: HanaMinA
       fonts:
         - asset: assets/fonts/HanaMinA.ttf
     - family: HanaMinB
       fonts:
         - asset: assets/fonts/HanaMinB.ttf
-    - family: SourceHanSans
+    # 思源黑体
+    - family: SourceHanSansCN
       fonts:
-        - asset: assets/SourceHanSansCN-Regular.ttf
-        - asset: assets/SourceHanSansCN-Bold.ttf
+        - asset: assets/fonts/SourceHanSansCN-Regular.ttf
+        - asset: assets/fonts/SourceHanSansCN-Bold.ttf
           weight: 700
+    # 全字形楷体
+    - family: TW-Kai
+      fonts:
+        - asset: assets/fonts/TW-Kai-98_1.ttf
+    - family: TW-Kai-Ext-B
+      fonts:
+        - asset: assets/fonts/TW-Kai-Ext-B-98_1.ttf
+    - family: TW-Kai-Plus
+      fonts:
+        - asset: assets/fonts/TW-Kai-Plus-98_1.ttf
     - family: Liu
       fonts:
         - asset: assets/fonts/苏新诗柳楷简.ttf

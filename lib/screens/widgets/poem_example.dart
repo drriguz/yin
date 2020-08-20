@@ -20,11 +20,7 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
   }
 
   Widget _buildExampleView(PoemTuneTemplate template) {
-    final List<TemplateLine> all = List<TemplateLine>();
-    for (final s in template.sections) {
-      all.addAll(s.lines);
-      all.add(null); // separator
-    }
+    final List<TemplateLine> all = template.lines;
 
     return Container(
       child: ListView.builder(
@@ -44,7 +40,6 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
         line,
         style: const TextStyle(
           fontSize: 22,
-          fontFamily: "HanaMinB",
         ),
       ),
     );
