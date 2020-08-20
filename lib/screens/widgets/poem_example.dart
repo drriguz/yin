@@ -51,7 +51,7 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return [
           SliverAppBar(
-            expandedHeight: 250,
+            expandedHeight: 200,
             floating: false,
             snap: false,
             pinned: true,
@@ -81,20 +81,16 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
                   image: AssetImage("assets/images/old_1.jpg"),
                 )),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 80, 8, 8),
-                  child: SingleChildScrollView(
-                    child: Text(
-                      widget._detail.description,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
+                  padding: const EdgeInsets.only(top: 80, left: 8, right: 8),
+                  child: Text(
+                    widget._detail.description,
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),
             ),
+            bottom: _createTab(),
           ),
-          SliverPersistentHeader(
-            delegate: _SliverAppBarDelegate(_createTab()),
-          )
         ];
       },
       body: Container(
@@ -118,27 +114,5 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
               ))
           .toList(),
     );
-  }
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabBar _tabBar;
-
-  _SliverAppBarDelegate(this._tabBar);
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(child: _tabBar);
-  }
-
-  @override
-  double get maxExtent => _tabBar.preferredSize.height;
-
-  @override
-  double get minExtent => _tabBar.preferredSize.height;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:yin/screens/viewmodels/poem_tune_detail.dart';
 import 'package:yin/screens/viewmodels/poem_tune_index.dart';
 import 'package:yin/services/db/poem_tune_entity.dart';
@@ -15,8 +17,8 @@ class PoemTuneService {
   PoemTuneService(this._repository);
 
   Future<List<PoemTuneIndex>> getPoemTuneIndex(String collectionName) async {
-    return _fetchCollection(collectionName)
-        .then((items) => items.map((e) => PoemTuneIndex(e.id, e.name, e.description)).toList());
+    return _fetchCollection(collectionName).then(
+        (items) => items.map((e) => PoemTuneIndex(e.id, e.name, e.description,e.example)).toList());
   }
 
   Future<List<PoemTuneEntity>> _fetchCollection(String collectionName) async {

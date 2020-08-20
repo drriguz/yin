@@ -29,13 +29,35 @@ class _PoemTuneIndexItemState extends State<PoemTuneIndexItem> {
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              _buildHeader(),
-              _buildDescription(),
-            ],
-          ),
+          child: Observer(
+              builder: (_) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      _buildHeader(),
+                      Text(
+                        widget.data.description,
+                        maxLines: _store.isExpanded ? null : 3,
+                        overflow: _store.isExpanded ? null : TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.grey),
+                      ),
+                      Container(
+                        child: _store.isExpanded ? _createExample(_store.example) : null,
+                      ),
+                    ],
+                  )),
+        ),
+      ),
+    );
+  }
+
+  Widget _createExample(String example) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Text(
+        _store.example,
+        style: const TextStyle(
+          fontFamily: "TW-Kai",
+          fontSize: 20,
         ),
       ),
     );
@@ -68,24 +90,6 @@ class _PoemTuneIndexItemState extends State<PoemTuneIndexItem> {
         Text(
           "小调 32字",
           style: const TextStyle(color: Colors.grey),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDescription() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Expanded(
-          child: Observer(
-            builder: (_) => Text(
-              widget.data.description,
-              maxLines: _store.isExpanded ? null : 3,
-              overflow: _store.isExpanded ? null : TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.grey),
-            ),
-          ),
         ),
         IconButton(
           onPressed: () {
