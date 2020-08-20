@@ -36,10 +36,10 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
   Widget _buildLine(String line) {
     return Padding(
       padding: EdgeInsets.all(8.0),
-      child: Text(
-        line,
-        style: const TextStyle(
-          fontSize: 22,
+      child: Center(
+        child: Text(
+          line,
+          style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 22),
         ),
       ),
     );
@@ -85,9 +85,7 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
                   child: SingleChildScrollView(
                     child: Text(
                       widget._detail.description,
-                      style: const TextStyle(
-                        color: Colors.black,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                 ),

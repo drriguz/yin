@@ -83,10 +83,7 @@ class _PoemTuneIndexItemState extends State<PoemTuneIndexItem> {
               widget.data.description,
               maxLines: _store.isExpanded ? null : 3,
               overflow: _store.isExpanded ? null : TextOverflow.ellipsis,
-              style: const TextStyle(
-                fontSize: 13,
-                color: Colors.grey,
-              ),
+              style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.grey),
             ),
           ),
         ),
