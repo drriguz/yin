@@ -87,9 +87,6 @@ flutter:
     - family: TW-Kai-Plus
       fonts:
         - asset: assets/fonts/TW-Kai-Plus-98_1.ttf
-    - family: Liu
-      fonts:
-        - asset: assets/fonts/苏新诗柳楷简.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -65,7 +65,7 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
                   widget._detail.name,
                   style: const TextStyle(
                     fontSize: 28,
-                    fontFamily: "Liu",
+                    fontFamily: "TW-Kai",
                     color: Colors.indigo,
                   ),
                 ),

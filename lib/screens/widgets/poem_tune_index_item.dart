@@ -51,7 +51,7 @@ class _PoemTuneIndexItemState extends State<PoemTuneIndexItem> {
             style: const TextStyle(
               fontSize: 48,
               color: Colors.indigo,
-              fontFamily: "Liu",
+              fontFamily: "TW-Kai",
             ),
           ),
         ),
@@ -61,7 +61,7 @@ class _PoemTuneIndexItemState extends State<PoemTuneIndexItem> {
             style: const TextStyle(
               fontSize: 24,
               color: Colors.indigo,
-              fontFamily: "Liu",
+              fontFamily: "TW-Kai",
             ),
           ),
         ),
