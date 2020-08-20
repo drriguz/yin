@@ -88,8 +88,12 @@ class _PoemTuneIndexItemState extends State<PoemTuneIndexItem> {
           ),
         ),
         IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.expand_more),
+          onPressed: () {
+            _store.expand(!_store.isExpanded);
+          },
+          icon: Observer(
+            builder: (_) => _store.isExpanded ? Icon(Icons.expand_less) : Icon(Icons.expand_more),
+          ),
         )
       ],
     );

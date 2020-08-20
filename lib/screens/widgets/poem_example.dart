@@ -52,7 +52,7 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
         return [
           SliverAppBar(
             expandedHeight: 250,
-            floating: true,
+            floating: false,
             snap: false,
             pinned: true,
             iconTheme: IconThemeData(
@@ -81,7 +81,7 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
                   image: AssetImage("assets/images/old_1.jpg"),
                 )),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 80, 8, 50),
+                  padding: const EdgeInsets.fromLTRB(8, 80, 8, 8),
                   child: SingleChildScrollView(
                     child: Text(
                       widget._detail.description,
@@ -91,13 +91,9 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
                 ),
               ),
             ),
-            bottom: TabBar(
-              unselectedLabelColor: Colors.grey,
-              labelColor: Colors.indigo,
-              indicatorColor: Colors.indigo,
-              controller: _tabController,
-              tabs: widget._detail.forms.map((e) => Tab(text: e.author)).toList(),
-            ),
+          ),
+          SliverPersistentHeader(
+            delegate: _SliverAppBarDelegate(_createTab()),
           )
         ];
       },
@@ -108,5 +104,41 @@ class _PoemExampleState extends State<PoemExample> with SingleTickerProviderStat
         ),
       ),
     );
+  }
+
+  TabBar _createTab() {
+    return TabBar(
+      unselectedLabelColor: Colors.grey,
+      labelColor: Colors.indigo,
+      indicatorColor: Colors.indigo,
+      controller: _tabController,
+      tabs: widget._detail.forms
+          .map((e) => Tab(
+                text: e.author,
+              ))
+          .toList(),
+    );
+  }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar _tabBar;
+
+  _SliverAppBarDelegate(this._tabBar);
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(child: _tabBar);
+  }
+
+  @override
+  double get maxExtent => _tabBar.preferredSize.height;
+
+  @override
+  double get minExtent => _tabBar.preferredSize.height;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }
