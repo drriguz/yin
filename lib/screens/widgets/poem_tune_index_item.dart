@@ -87,10 +87,6 @@ class _PoemTuneIndexItemState extends State<PoemTuneIndexItem> {
             ),
           ),
         ),
-        Text(
-          "小调 32字",
-          style: const TextStyle(color: Colors.grey),
-        ),
         IconButton(
           onPressed: () {
             _store.expand(!_store.isExpanded);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yin/screens/widgets/draft_item.dart';
 
 class PoemWorksScreen extends StatelessWidget {
   @override
@@ -8,16 +9,12 @@ class PoemWorksScreen extends StatelessWidget {
         title: Text("我的作品"),
       ),
       body: Container(
-        child: Text(
-          """
-            CJK基本  义礼说选
-            CJK扩展A 㡛㬐㖧䵍
-            CJK扩展B 𣚣䶅𪘆𦞕
-            CJK扩展C 𪢨𪪖𫔺𫜴
-            CJK扩展D 𫝀𫞂𫝻𫠝
-            CJK扩展E 𫠫𬚚𬳕𬺡
-            CJK扩展F 𬺰𬺱𮯟𮯠""",
-          style: Theme.of(context).textTheme.headline6,
+        child: ListView(
+          children: <Widget>[
+            DraftItem("相见欢·秋思", "年年岁岁如斯,小儿时,夜影青春,留恋亦难持,莫回首,人应旧,但新词,文采风流,说不尽相思"),
+            DraftItem("蝶恋花·小夏", "小夏熏风春去早,回忆无边,酷暑花知道,最肯忘回眸一笑,最不屑那时飘渺.常有浮云遮月貌,欲见还休,饮恨接昏晓,纵使轻狂为君照,天涯梦里曾相告？ "),
+            DraftItem("相见欢·残霞", "残霞不语秋风,柳梢重"),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
