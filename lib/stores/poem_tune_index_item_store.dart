@@ -20,13 +20,12 @@ abstract class _PoemTuneIndexItemStore with Store {
 
   List<PoemTuneIndex> poemTuneIndex = List<PoemTuneIndex>();
 
-  _PoemTuneIndexItemStore(this._poemTuneService, this._item);
+  _PoemTuneIndexItemStore(this._poemTuneService, this._item) {
+    example = _extractExample();
+  }
 
   @action
   Future<void> expand(v) async {
-    if (example == null) {
-      example = _extractExample();
-    }
     isExpanded = v;
   }
 

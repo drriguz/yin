@@ -22,8 +22,9 @@ final globalTheme = ThemeData(
     TextTheme(
       bodyText1: hanaMin,
       bodyText2: TextStyle(fontFamily: "SourceHanSansCN"),
-      headline6: twKai,
-      subtitle1: twKai,
+      headline5: hanaMin,
+      headline6: hanaMin,
+      subtitle1: hanaMin,
       subtitle2: hanaMin,
     ),
   ),
